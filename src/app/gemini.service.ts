@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import { environment } from '../emvironments/environment';
+
+// Access API_KEY
+const apiKey = environment.API_KEY;
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +15,7 @@ export class GeminiService {
 
   private massageHistory: BehaviorSubject<any> = new BehaviorSubject(null);
   constructor() {
-    this.gene=new GoogleGenerativeAI("AIzaSyB3bPKSmh0LbtGZavMmbk5wF2qePX_LmoA");
+    this.gene=new GoogleGenerativeAI('api_key');
    }
    formatText(text:string){
     const result=text.replaceAll('*','');
