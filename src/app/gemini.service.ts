@@ -15,7 +15,7 @@ export class GeminiService {
 
   private massageHistory: BehaviorSubject<any> = new BehaviorSubject(null);
   constructor() {
-    this.gene=new GoogleGenerativeAI('api_key');
+    this.gene=new GoogleGenerativeAI(apiKey);
    }
    formatText(text:string){
     const result=text.replaceAll('*','');
