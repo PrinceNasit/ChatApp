@@ -21,5 +21,5 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Images
 
 ![Login page](/images/1.png)
-![Home page](/images/logo.png)
-![Chat responces](/images/logo.png)
+![Home page](/images/2.png)
+![Chat responces](/images/3.png)
