@@ -1,0 +1,39 @@
+<head>
+  <link rel="stylesheet" href="app.component.css">
+</head>
+
+<div class="navbar">
+  <span class="app-title">My Chat App</span>
+  @if (authService.currentUserSign()==null){
+    <div class="auth-links">
+      <a routerLink="/login">Login</a>
+      <a routerLink="/register">Register</a>
+    </div>
+  }
+  @if (authService.currentUserSign()){
+    <div class="auth-links">
+      <span (click)="logout()">Logout</span>
+    </div>
+  }
+  </div>
+  @if (authService.currentUserSign()){
+  <div class="content">
+    <header class="chat-header">
+      My Chat App
+    </header>
+    <main class="history">
+    <ng-container *ngFor="let item of chatHistory">
+      <div>
+        <i class="fa" 
+        [ngClass]="{'fa-user-circle user-query': item.from==='user','fa-graduation-cap user-query':item.from==='bot'}"></i>
+      <span class="response {{ item.from === 'bot' ? 'bot-response' : 'user-query' }}">{{item.massage}}</span>
+      </div>
+    </ng-container>
+    </main>
+    <footer class="chat-input">
+      <input type="text" (keyup.enter)="sendData()" id="message-input" placeholder="Enetr your prompt here..." [(ngModel)]="prompt" [disabled]="loading" autocomplete="off"/>
+      <button id="send-button" (click)="sendData()" [disabled]="loading">Send</button>
+    </footer>
+  </div>
+  }
+<router-outlet></router-outlet>

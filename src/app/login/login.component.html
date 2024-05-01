@@ -1,0 +1,21 @@
+<head>
+  <link rel="stylesheet" href="login.component.css">
+</head>
+
+<h1>My Chat App - Login</h1>
+
+@if (errorMessage) {
+  <div class="error-message">{{ errorMessage }}</div>
+}
+
+<form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <input type="text" placeholder="Email" formControlName="email" />
+  </div>
+  <div class="form-group">
+    <input type="password" placeholder="Password" formControlName="password" />
+  </div>
+  <div class="form-group">
+    <button type="submit">Sign In</button>
+  </div>
+</form>
