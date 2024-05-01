@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    API_KEY: 'your_api_key_here'
+    API_KEY: 'AIzaSyB3bPKSmh0LbtGZavMmbk5wF2qePX_LmoA'
   };
