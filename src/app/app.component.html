@@ -32,7 +32,7 @@
     </ng-container>
     </main>
     <footer class="chat-input">
-      <input type="text" (keyup.enter)="sendData()" id="message-input" placeholder="Enetr your prompt here..." [(ngModel)]="prompt" [disabled]="loading" autocomplete="off"/>
+      <input type="text" (keyup.enter)="sendData()" id="message-input" placeholder="Enter your prompt here..." [(ngModel)]="prompt" [disabled]="loading" autocomplete="off"/>
       <button id="send-button" (click)="sendData()" [disabled]="loading">Send</button>
     </footer>
   </div>

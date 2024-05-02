@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { environment } from '../emvironments/environment';
+import { environment } from '../environment/environment';
 
 // Access API_KEY
 const apiKey = environment.API_KEY;
