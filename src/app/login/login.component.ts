@@ -24,12 +24,23 @@ export class LogicComponent {
   onSubmit(): void {
     console.log('login');
     const r=this.form.getRawValue();
-    this.authService.login(r.email,r.password).subscribe({next:()=>{
-      this.router.navigateByUrl('/');
-    },
-    error:(err)=>{
-      this.errorMessage=err.code;
+    if(r.email=="" || r.password==""){
+      this.errorMessage="Please enter both E-mail and password.";
     }
-  });
+    else if(r.email==""){
+      this.errorMessage="Please enter your E-mail address.";
+    }
+    else if(r.password=""){
+      this.errorMessage="Please enter  your password.";
+    }
+    else{
+      this.authService.login(r.email,r.password).subscribe({next:()=>{
+        this.router.navigateByUrl('/');
+      },
+      error:(err)=>{
+        this.errorMessage=err.code;
+      }
+    });
+    }
   }
 }

@@ -25,6 +25,10 @@ export class RegisterComponent {
   onSubmit(): void {
     console.log('register');
     const r=this.form.getRawValue();
+    if(r.email=="" || r.password=="" || r.username==""){
+      this.errorMessage="Please enter all the fields.";
+    }
+    else{
     this.authService.register(r.email,r.username,r.password).subscribe({next:()=>{
       this.router.navigateByUrl('/');
     },
@@ -32,5 +36,6 @@ export class RegisterComponent {
       this.errorMessage=err.code;
     }
   });
+}
   }
 }

@@ -19,7 +19,8 @@
   @if (authService.currentUserSign()){
   <div class="content">
     <header class="chat-header">
-      My Chat App
+      <!-- My Chat App <br> -->
+      Hello, {{authService.currentUserSign()?.username}}
     </header>
     <main class="history">
     <ng-container *ngFor="let item of chatHistory">

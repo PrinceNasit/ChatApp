@@ -7,7 +7,11 @@ h1 {
     width: 300px;
     margin: 0 auto;
   }
-  
+  .error-message{
+    text-align: center;
+    margin:  auto;
+    font-weight: bold;
+  }
   .form-group {
     margin-bottom: 15px;
   }
