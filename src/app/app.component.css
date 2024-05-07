@@ -56,21 +56,9 @@
   font-family: Arial, sans-serif;
 }
 
-
-/* .history {
-  width: 80%;
-  max-width: 400px; 
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
-  overflow-y: auto; 
-  font-family: Arial, sans-serif;
-} */
 .history {
   width: 80%;
-  max-width: 600px;
+  max-width: 700px;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 10px;
@@ -97,7 +85,7 @@
 .chat-input {
   display: flex;
   width: 80%;
-  max-width: 600px;
+  max-width: 700px;
   max-height: 90px; 
 }
 
@@ -130,9 +118,33 @@
 }
 
 .user-query {
-  color: #007bff; /* Blue color for user queries */
+  color: #007bff; 
 }
 
 .bot-response {
-  color: #28a745; /* Green color for bot responses */
+  color: #28a745; 
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #dddddd;
+}
+

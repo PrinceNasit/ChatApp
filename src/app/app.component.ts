@@ -4,7 +4,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { FormsModule } from '@angular/forms';
-import { GeminiService } from './gemini.service';
+import { DataService } from './mydata.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,9 @@ export class AppComponent {
   http = inject(HttpClient);
   authService=inject(AuthService);
   prompt: string="";
-  geminiService: GeminiService=inject(GeminiService);
+  type:string="";
+  col:string="";
+  dataService: DataService=inject(DataService);
   ngOnInit():void{
     this.authService.user$.subscribe((user)=>{
       if(user){
@@ -30,7 +32,7 @@ export class AppComponent {
       }else{
         this.authService.currentUserSign.set(null);
       }
-      console.log(this.authService.currentUserSign())
+     
     })
   }
   logout(): void {
@@ -39,20 +41,26 @@ export class AppComponent {
   loading: boolean=false;
   chatHistory: any[]=[];
   constructor(){
-    this.geminiService.getMassageHistory().subscribe((res)=>{
+    this.dataService.getMassageHistory().subscribe((res)=>{
       if(res){
         this.chatHistory.push(res);
+        console.log(res);
       }
     });
     // console.log(this.chatHistory);
+    this.type='';
+    this.col="";
   }
  
   async sendData(){
     if(this.prompt && !this.loading){
       this.loading=true;
       const data=this.prompt;
+      const words = data.split(" ");
+      this.type=words[0].toLowerCase();
+      this.col= words.slice(1).join(" ");
       this.prompt="";
-      await this.geminiService.generateText(data);
+      await this.dataService.generateText(data,this.type);
        this.loading=false;
     }
   }

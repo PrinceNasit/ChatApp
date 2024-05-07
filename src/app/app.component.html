@@ -19,7 +19,6 @@
   @if (authService.currentUserSign()){
   <div class="content">
     <header class="chat-header">
-      <!-- My Chat App <br> -->
       Hello, {{authService.currentUserSign()?.username}}
     </header>
     <main class="history">
@@ -28,6 +27,42 @@
         <i class="fa" 
         [ngClass]="{'fa-user-circle user-query': item.from==='user','fa-graduation-cap user-query':item.from==='bot'}"></i>
       <span class="response {{ item.from === 'bot' ? 'bot-response' : 'user-query' }}">{{item.massage}}</span>
+      <span class="response {{ item.from === 'bot' ? 'bot-response' : 'user-query' }}"></span>
+      @if(item.from=='bot'){
+      @if(item.error==="NaN"){
+          @if(item.type=="hide" && item.col!=='NaN'){
+         <span>{{col}} column removed successfully.</span>
+         <table border="1">
+          <thead>
+            <tr>
+              <th *ngFor="let col of item.col">{{ col }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of item.data">
+              <td *ngFor="let cell of row">{{ cell }}</td>
+            </tr>
+          </tbody>
+        </table>
+          }
+          @else if(item.type=="show"&& item.col!=='NaN'){
+           <span>Displaying {{col}} column...</span> <br>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>{{item.col}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let value of item.data">
+          <td>{{ value }}</td>
+        </tr>
+      </tbody>
+    </table>
+             }
+      }
+      @else if(item.error!=="NaN" || item.col==='NaN'){<span class="response {{ item.from === 'bot' ? 'bot-response' : 'user-query' }}">{{item.error}}</span>}
+    }
       </div>
     </ng-container>
     </main>
