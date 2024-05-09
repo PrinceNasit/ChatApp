@@ -26,7 +26,7 @@ export class AppComponent {
     this.authService.user$.subscribe((user)=>{
       if(user){
         this.authService.currentUserSign.set({
-          emil:user.email!,
+          email:user.email!,
           username:user.displayName!,
         });
       }else{
@@ -63,10 +63,5 @@ export class AppComponent {
       await this.dataService.generateText(data,this.type);
        this.loading=false;
     }
-  }
-
-  formatText(text:string){
-    const result=text.replaceAll('*','');
-    return result;
   }
 }

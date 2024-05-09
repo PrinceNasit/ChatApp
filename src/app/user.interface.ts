@@ -1,4 +1,4 @@
 export interface UserInterface{
-    emil:string,
+    email:string,
     username: string
 }
